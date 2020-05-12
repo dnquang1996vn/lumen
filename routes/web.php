@@ -17,4 +17,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('user', 'UserController@index');
+$router->get('users', 'UserController@index');
+$router->get('strains', 'StrainController@index');
+$router->post('strains', 'StrainController@store');

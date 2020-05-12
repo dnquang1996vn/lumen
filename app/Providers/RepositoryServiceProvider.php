@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Repositories\BaseRepositoryInterface;
+use App\Repositories\Eloquent\StrainRepository;
+use App\Repositories\StrainRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use App\Repositories\Eloquent\BaseRepository;
 use App\Repositories\Eloquent\UserRepository;
@@ -23,5 +25,6 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(StrainRepositoryInterface::class, StrainRepository::class);
     }
 }

@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Services\StrainService;
+use Illuminate\Http\Request;
+
+class StrainController extends Controller
+{
+    /**
+     * @var StrainService
+     */
+    private $strainService;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @param StrainService $strainService
+     */
+    public function __construct(StrainService $strainService)
+    {
+        $this->strainService = $strainService;
+    }
+
+    public function index()
+    {
+        $strains = $this->strainService->getAll();
+
+        return $this->responseSuccess($strains);
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => "required",
+            'code_tag' => "required",
+        ]);
+
+        $newStrain = $this->strainService->create($request->all());
+
+        return $this->responseSuccess($newStrain);
+    }
+
+}
