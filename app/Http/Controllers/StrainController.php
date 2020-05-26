@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Strain;
 use App\Services\StrainService;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,11 @@ class StrainController extends Controller
         $newStrain = $this->strainService->create($request->all());
 
         return $this->responseSuccess($newStrain);
+    }
+
+    public function show($id)
+    {
+        return $this->responseSuccess(Strain::findOrFail($id));
     }
 
 }

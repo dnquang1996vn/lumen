@@ -16,7 +16,10 @@ class CreateStrainsTable extends Migration
         Schema::create('strains', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('code_tag');
+            $table->string('code_tag')->nullable();
+            $table->boolean('hidden')->default(false);
+            $table->boolean('active')->default(true);
+            $table->tinyInteger('sync_status')->default(0);
             $table->timestamps();
         });
     }
