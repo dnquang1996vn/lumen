@@ -20,4 +20,5 @@ $router->get('/', function () use ($router) {
 $router->get('users', 'UserController@index');
 $router->get('strains', 'StrainController@index');
 $router->get('strains/{id}', 'StrainController@show');
+$router->put('strains/{id}', 'StrainController@update');
 $router->post('strains', 'StrainController@store');

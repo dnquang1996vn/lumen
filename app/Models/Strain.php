@@ -31,7 +31,7 @@ use Illuminate\Database\Eloquent\Model;
 class Strain extends Model
 {
     protected $fillable = [
-        'name', 'code_tag',
+        'name', 'code_tag', 'hidden', 'active', 'sync_status'
     ];
 
     protected $casts = [

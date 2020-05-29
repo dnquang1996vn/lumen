@@ -34,7 +34,6 @@ class StrainController extends Controller
     {
         $this->validate($request, [
             'name' => "required",
-            'code_tag' => "required",
         ]);
 
         $newStrain = $this->strainService->create($request->all());
@@ -47,4 +46,12 @@ class StrainController extends Controller
         return $this->responseSuccess(Strain::findOrFail($id));
     }
 
+    public function update($id, Request $request)
+    {
+        $strain = Strain::query()->find($id);
+
+        $strain->update($request->all());
+
+        return $this->responseSuccess($strain);
+    }
 }
